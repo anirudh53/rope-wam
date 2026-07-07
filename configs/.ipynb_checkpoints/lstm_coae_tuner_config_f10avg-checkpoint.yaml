@@ -1,0 +1,44 @@
+model:
+  bottleneck_size: 10
+
+training:
+  epochs: 500
+  batch_size: 1
+  patience: 50
+  model_name: lstm_coae_3repeats_f10avg
+  tuner_name: lstm_coae_tuner_3repeats_f10avg
+  step_size: 50
+  gamma: 0.5
+
+data:
+  directory: data/wam_coeffs_with_f10avg/  # <-- CHANGED: Use new directory with F10_41day_avg
+  suffix: _f10avg.h5  # <-- CHANGED: Use new suffix
+  test_years:
+  - 2019
+  - 2021
+  - 2023
+  training_years:
+  - 2008
+  - 2009
+  - 2010
+  - 2011
+  - 2012
+  - 2013
+  - 2014
+  - 2015
+  - 2016
+  - 2017
+  - 2018
+  - 2019
+  - 2020
+  - 2021
+  - 2022
+  - 2023
+  validation_years:
+  - 2020
+  - 2022
+  nm: 10  # number of output features (coefficients)
+  notS: 3  # number of time steps
+  noI: 6  # <-- IMPORTANT: This stays 6, but code auto-adjusts to 7 when use_f10_avg=True
+  batch_size: 1
+  use_f10_avg: true  # <-- NEW: Enable F10_41day_avg feature
